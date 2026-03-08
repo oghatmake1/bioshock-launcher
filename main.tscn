@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bavhps2wgtwrj"]
+
+[ext_resource type="Script" uid="uid://pyhyp8t0i4ht" path="res://main.gd" id="1_0xm2m"]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_ig7tw"]
+
+[node name="Node2D" type="Node2D" unique_id=1323204524]
+script = ExtResource("1_0xm2m")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2062107764]
+offset_right = 1152.0
+offset_bottom = 648.0
+expand_mode = 5
+stretch_mode = 6
+
+[node name="Games" type="ItemList" parent="." unique_id=306005155]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 229.0
+offset_bottom = 6388.0
+allow_rmb_select = true
+allow_search = false
+item_count = 5
+item_0/text = "Bioshock 1"
+item_1/text = "Bioshock 1 Remastered"
+item_2/text = "Bioshock 2"
+item_3/text = "Bioshock 2 Remastered"
+item_4/text = "Bioshock Infinite"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=335587532]
+stream = SubResource("AudioStreamWAV_ig7tw")
+playback_type = 1
+
+[node name="Play" type="Button" parent="." unique_id=2107840261]
+offset_left = 544.0
+offset_top = 555.0
+offset_right = 710.0
+offset_bottom = 616.0
+text = "Play"
+
+[connection signal="button_up" from="Play" to="." method="Play_pressed"]
