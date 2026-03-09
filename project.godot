@@ -8,26 +8,46 @@
 
 config_version=5
 
+[accessibility]
+
+general/accessibility_support=2
+general/updates_per_second=100
+
 [application]
 
 config/name="BioShock Launcher"
 run/main_scene="uid://bavhps2wgtwrj"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/windows_native_icon="res://icon.ico"
+boot_splash/show_image=false
+boot_splash/use_filter=false
+config/icon="uid://baaoxlgncqwbm"
+config/macos_native_icon="res://mac.icns"
+config/windows_native_icon="res://windows.ico"
 
 [display]
 
-window/size/resizable=false
+window/size/initial_position_type=4
 window/size/borderless=true
+window/stretch/mode="viewport"
+window/handheld/orientation=4
+window/vsync/vsync_mode=0
 
 [dotnet]
 
 project/assembly_name="New Game Project"
 
+[internationalization]
+
+locale/translation_add_builtin_strings_to_pot=true
+
 [physics]
 
 2d/physics_engine="Dummy"
 3d/physics_engine="Dummy"
+3d/default_gravity=0.0
+3d/default_gravity_vector=Vector3(0, 0, 0)
+2d/default_gravity=0.0
+2d/default_gravity_vector=Vector2(0, 0)
 
 [rendering]
 
@@ -36,8 +56,7 @@ gl_compatibility/driver="vulkan"
 gl_compatibility/driver.windows="opengl3_angle"
 gl_compatibility/driver.linuxbsd="opengl3_es"
 gl_compatibility/driver.macos="opengl3_angle"
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"
 lights_and_shadows/directional_shadow/size=256
 lights_and_shadows/directional_shadow/size.mobile=256
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
@@ -48,6 +67,7 @@ reflections/reflection_atlas/reflection_count=1
 shading/overrides/force_lambert_over_burley.mobile=false
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 camera/depth_of_field/depth_of_field_bokeh_quality=0
+viewport/hdr_2d=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 scaling_3d/scale=0.25
 scaling_3d/fsr_sharpness=0.0
