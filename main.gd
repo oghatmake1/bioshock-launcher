@@ -27,13 +27,13 @@ func _process(_delta: float) -> void:
 
 	if onesel and current_track != "res://Music/1.mp3":
 		play_sound("res://Music/1.mp3")
-		change_texture("res://Backgrounds/1.webp")
+		change_texture("res://Backgrounds/1.exr")
 	elif twosel and current_track != "res://Music/2.mp3":
 		play_sound("res://Music/2.mp3")
-		change_texture("res://Backgrounds/2.webp")
+		change_texture("res://Backgrounds/2.exr")
 	elif infsel and current_track != "res://Music/Infinite.mp3":
 		play_sound("res://Music/Infinite.mp3")
-		change_texture("res://Backgrounds/Infinite.webp")
+		change_texture("res://Backgrounds/Infinite.exr")
 
 func play_sound(audio_path: String):
 	if args_flags["nosnd"]:
