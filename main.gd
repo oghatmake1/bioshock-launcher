@@ -8,6 +8,7 @@ extends Node2D
 @onready var args_flags = {} 
 
 func _ready():
+<<<<<<< HEAD
 	var language = "automatic"
 	# Load here language from the user settings file
 	if language == "automatic":
@@ -17,6 +18,9 @@ func _ready():
 		TranslationServer.set_locale(language)
 	args_flags = parse_flags() 
 	$Play.text = tr("start")
+=======
+	args_flags = parse_flags() 
+>>>>>>> b5e87274072798d6b54324030d83e624b0b24255
 
 func parse_flags() -> Dictionary:
 	var out = {"noimg": false, "nosnd": false}
