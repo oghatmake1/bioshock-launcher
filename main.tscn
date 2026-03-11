@@ -38,4 +38,12 @@ offset_right = 710.0
 offset_bottom = 616.0
 text = "Play"
 
+[node name="Exit" type="Button" parent="." unique_id=1331795032]
+offset_left = 1105.0
+offset_top = -1.0
+offset_right = 1153.0
+offset_bottom = 47.0
+text = "X"
+
 [connection signal="button_up" from="Play" to="." method="Play_pressed"]
+[connection signal="pressed" from="Exit" to="." method="exit"]
