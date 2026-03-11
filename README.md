@@ -1,3 +1,7 @@
 # Bioshock Launcher
 
-self-explanatory 
+self-explanatory
+
+## Attempted but Failed
+
+* Mod Support
