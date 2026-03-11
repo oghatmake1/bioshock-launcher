@@ -8,7 +8,6 @@ extends Node2D
 @onready var args_flags = {} 
 
 func _ready():
-<<<<<<< HEAD
 	var language = "automatic"
 	# Load here language from the user settings file
 	if language == "automatic":
@@ -18,10 +17,8 @@ func _ready():
 		TranslationServer.set_locale(language)
 	args_flags = parse_flags() 
 	$Play.text = tr("start")
-=======
 	args_flags = parse_flags() 
->>>>>>> b5e87274072798d6b54324030d83e624b0b24255
-
+	
 func parse_flags() -> Dictionary:
 	var out = {"noimg": false, "nosnd": false}
 	var args = OS.get_cmdline_args()
@@ -46,6 +43,8 @@ func _process(_delta: float) -> void:
 	elif infsel and current_track != "res://Music/Infinite.mp3":
 		play_sound("res://Music/Infinite.mp3")
 		change_texture("res://Backgrounds/Infinite.exr")
+	if Input.is_action_just_pressed("Play"):
+		open_game()
 
 func play_sound(audio_path: String):
 	if args_flags["nosnd"]:
