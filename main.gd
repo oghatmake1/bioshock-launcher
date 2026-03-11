@@ -18,6 +18,7 @@ func _ready():
 	args_flags = parse_flags() 
 	$Play.text = tr("start")
 	args_flags = parse_flags() 
+	sel.select(0)
 	
 func parse_flags() -> Dictionary:
 	var out = {"noimg": false, "nosnd": false}
