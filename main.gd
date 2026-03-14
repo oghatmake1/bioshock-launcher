@@ -35,14 +35,14 @@ func _process(_delta: float) -> void:
 	var twosel = sel.is_selected(2) or sel.is_selected(3)
 	var infsel = sel.is_selected(4)
 
-	if onesel and current_track != "res://Music/1.mp3":
-		play_sound("res://Music/1.mp3")
+	if onesel and current_track != "res://Music/1.ogg":
+		play_sound("res://Music/1.ogg")
 		change_texture("res://Backgrounds/1.exr")
-	elif twosel and current_track != "res://Music/2.mp3":
-		play_sound("res://Music/2.mp3")
+	elif twosel and current_track != "res://Music/2.ogg":
+		play_sound("res://Music/2.ogg")
 		change_texture("res://Backgrounds/2.exr")
-	elif infsel and current_track != "res://Music/Infinite.mp3":
-		play_sound("res://Music/Infinite.mp3")
+	elif infsel and current_track != "res://Music/Infinite.ogg":
+		play_sound("res://Music/Infinite.ogg")
 		change_texture("res://Backgrounds/Infinite.exr")
 	if Input.is_action_just_pressed("Play"):
 		open_game()
