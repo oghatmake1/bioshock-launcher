@@ -7,9 +7,11 @@ extends Node2D
 @onready var current_track: String = ""
 @onready var args_flags = {} 
 
+
 func _ready():
 	var language = "automatic"
 	# Load here language from the user settings file
+
 	if language == "automatic":
 		var preferred_language = OS.get_locale_language()
 		TranslationServer.set_locale(preferred_language)
@@ -19,7 +21,16 @@ func _ready():
 	$Play.text = tr("start")
 	args_flags = parse_flags() 
 	sel.select(0)
+
+	#preload
+	preload("res://Backgrounds/1.exr")
+	preload("res://Backgrounds/2.exr")
+	preload("res://Backgrounds/Infinite.exr")
+	preload("res://Music/1.ogg")
+	preload("res://Music/2.ogg")
+	preload("res://Music/Infinite.ogg")
 	
+
 func parse_flags() -> Dictionary:
 	var out = {"noimg": false, "nosnd": false}
 	var args = OS.get_cmdline_args()
