@@ -6,8 +6,7 @@ extends Node2D
 
 @onready var current_track: String = ""
 @onready var args_flags = {} 
-
-
+@onready var inc
 func _ready():
 	var language = "automatic"
 	# Load here language from the user settings file
@@ -21,8 +20,8 @@ func _ready():
 	$Play.text = tr("start")
 	args_flags = parse_flags() 
 	sel.select(0)
-
-	#preload
+	# preload
+	inc = preload("res://Common/constants.gd")
 	preload("res://Backgrounds/1.exr")
 	preload("res://Backgrounds/2.exr")
 	preload("res://Backgrounds/Infinite.exr")
@@ -42,19 +41,23 @@ func parse_flags() -> Dictionary:
 	return out
 
 func _process(_delta: float) -> void:
-	var onesel = sel.is_selected(0) or sel.is_selected(1)
-	var twosel = sel.is_selected(2) or sel.is_selected(3)
-	var infsel = sel.is_selected(4)
+	var names = inc.names
 
-	if onesel and current_track != "res://Music/1.ogg":
-		play_sound("res://Music/1.ogg")
-		change_texture("res://Backgrounds/1.exr")
-	elif twosel and current_track != "res://Music/2.ogg":
-		play_sound("res://Music/2.ogg")
-		change_texture("res://Backgrounds/2.exr")
-	elif infsel and current_track != "res://Music/Infinite.ogg":
-		play_sound("res://Music/Infinite.ogg")
-		change_texture("res://Backgrounds/Infinite.exr")
+	if sel.is_selected(0) and current_track != "res://Music/"+ names[0] + ".ogg":
+		play_sound("res://Music/"+ names[0] + ".ogg")
+		change_texture("res://Backgrounds/"+ names[0] + ".exr")
+	if sel.is_selected(1) and current_track != "res://Music/"+ names[0] + ".ogg":
+		play_sound("res://Music/"+ names[0] + ".ogg")
+		change_texture("res://Backgrounds/"+ names[0] + ".exr")
+	elif sel.is_selected(2) and current_track != "res://Music/"+ names[1] + ".ogg":
+		play_sound("res://Music/"+ names[1] + ".ogg")
+		change_texture("res://Backgrounds/"+ names[1] + ".exr")
+	elif sel.is_selected(3) and current_track != "res://Music/"+ names[1] + ".ogg":
+		play_sound("res://Music/"+ names[1] + ".ogg")
+		change_texture("res://Backgrounds/"+ names[1] + ".exr")
+	elif sel.is_selected(4) and current_track != "res://Music/"+ names[2] + ".ogg":
+		play_sound("res://Music/"+ names[2] + ".ogg")
+		change_texture("res://Backgrounds/"+ names[2] + ".exr")
 	if Input.is_action_just_pressed("Play"):
 		open_game()
 
@@ -91,7 +94,6 @@ func Play_pressed() -> void:
 		open_game()
 
 func open_game():
-	const inc = preload("res://Common/constants.gd")
 	var gameslist = inc.gamelist
 
 	for i in range(len(gameslist)):
