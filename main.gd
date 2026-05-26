@@ -5,8 +5,10 @@ extends Node2D
 @onready var sel: ItemList = $Games
 
 @onready var current_track: String = ""
-@onready var args_flags = {}
+@onready var args_flags = {} 
 @onready var inc
+@onready var selected: int = 0
+
 func _ready():
 	var language = "automatic"
 	# Load here language from the user settings file
@@ -16,8 +18,9 @@ func _ready():
 		TranslationServer.set_locale(preferred_language)
 	else:
 		TranslationServer.set_locale(language)
-	args_flags = parse_flags()
+	args_flags = parse_flags() 
 	$Play.text = tr("start")
+	args_flags = parse_flags() 
 	sel.select(0)
 	# preload
 	inc = preload("res://Common/constants.gd")
@@ -30,6 +33,7 @@ func _ready():
 	
 
 func parse_flags() -> Dictionary:
+	
 	var out = {"noimg": false, "nosnd": false}
 	var args = OS.get_cmdline_args()
 	for i in range(args.size()):
@@ -41,7 +45,9 @@ func parse_flags() -> Dictionary:
 
 func _process(_delta: float) -> void:
 	var names = inc.names
-
+	if selected != sel.get_selected_items()[0]:
+		if not selected == -1 or selected == sel.item_count:
+			selected = sel.get_selected_items()[0] 
 	if sel.is_selected(0) and current_track != "res://Music/"+ names[0] + ".ogg":
 		play_sound("res://Music/"+ names[0] + ".ogg")
 		change_texture("res://Backgrounds/"+ names[0] + ".exr")
@@ -59,6 +65,18 @@ func _process(_delta: float) -> void:
 		change_texture("res://Backgrounds/"+ names[2] + ".exr")
 	if Input.is_action_just_pressed("Play"):
 		open_game()
+	if Input.is_action_just_pressed("nex"):
+		if selected == sel.item_count-1:
+			selected = 0
+		else:
+			selected += 1
+	if Input.is_action_just_pressed("prev"):
+		if selected == 0:
+			selected = sel.item_count-1
+		else:
+			selected -= 1
+		
+	sel.select(selected)
 
 func play_sound(audio_path: String):
 	if args_flags["nosnd"]:

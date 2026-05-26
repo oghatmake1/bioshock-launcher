@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://pyhyp8t0i4ht" path="res://main.gd" id="1_0xm2m"]
 
-[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_ig7tw"]
+[sub_resource type="AudioStream" id="AudioStream_ig7tw"]
+
+[sub_resource type="Shortcut" id="Shortcut_ig7tw"]
 
 [node name="Node2D" type="Node2D" unique_id=1323204524]
 script = ExtResource("1_0xm2m")
@@ -28,14 +30,14 @@ item_3/text = "Bioshock 2 Remastered"
 item_4/text = "Bioshock Infinite"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=335587532]
-stream = SubResource("AudioStreamWAV_ig7tw")
-playback_type = 1
+stream = SubResource("AudioStream_ig7tw")
 
 [node name="Play" type="Button" parent="." unique_id=2107840261]
 offset_left = 544.0
 offset_top = 555.0
 offset_right = 710.0
 offset_bottom = 616.0
+shortcut = SubResource("Shortcut_ig7tw")
 text = "Play"
 
 [node name="Exit" type="Button" parent="." unique_id=1331795032]
