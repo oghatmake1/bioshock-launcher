@@ -18,7 +18,6 @@ func _ready():
 		TranslationServer.set_locale(language)
 	args_flags = parse_flags() 
 	$Play.text = tr("start")
-	args_flags = parse_flags() 
 	sel.select(0)
 	# preload
 	inc = preload("res://Common/constants.gd")
