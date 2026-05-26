@@ -5,7 +5,7 @@ extends Node2D
 @onready var sel: ItemList = $Games
 
 @onready var current_track: String = ""
-@onready var args_flags = {} 
+@onready var args_flags = {}
 @onready var inc
 func _ready():
 	var language = "automatic"
@@ -16,7 +16,7 @@ func _ready():
 		TranslationServer.set_locale(preferred_language)
 	else:
 		TranslationServer.set_locale(language)
-	args_flags = parse_flags() 
+	args_flags = parse_flags()
 	$Play.text = tr("start")
 	sel.select(0)
 	# preload
