@@ -10,14 +10,8 @@ extends Node2D
 @onready var selected: int = 0
 
 func _ready():
-	var language = "automatic"
-	# Load here language from the user settings file
-
-	if language == "automatic":
-		var preferred_language = OS.get_locale_language()
-		TranslationServer.set_locale(preferred_language)
-	else:
-		TranslationServer.set_locale(language)
+	
+	#print(tr("start"))
 	args_flags = parse_flags() 
 	$Play.text = tr("start")
 	args_flags = parse_flags() 
