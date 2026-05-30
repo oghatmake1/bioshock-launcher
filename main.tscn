@@ -31,6 +31,8 @@ item_4/text = "Bioshock Infinite"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=335587532]
 stream = SubResource("AudioStream_ig7tw")
+attenuation = 9.25119e-05
+panning_strength = 0.0
 
 [node name="Play" type="Button" parent="." unique_id=2107840261]
 offset_left = 544.0

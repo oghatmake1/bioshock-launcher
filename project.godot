@@ -27,6 +27,11 @@ config/icon="uid://baaoxlgncqwbm"
 config/macos_native_icon="res://mac.icns"
 config/windows_native_icon="res://windows.ico"
 
+[audio]
+
+general/2d_panning_strength=0.0
+general/3d_panning_strength=0.0
+
 [display]
 
 window/size/initial_position_type=4
