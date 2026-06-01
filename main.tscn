@@ -22,6 +22,7 @@ offset_right = 229.0
 offset_bottom = 6388.0
 allow_rmb_select = true
 allow_search = false
+wraparound_items = false
 item_count = 5
 item_0/text = "Bioshock 1"
 item_1/text = "Bioshock 1 Remastered"
