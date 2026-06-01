@@ -17,6 +17,7 @@ func _ready():
 	args_flags = parse_flags() 
 	sel.select(0)
 	# preload
+	
 	inc = preload("res://Common/constants.gd")
 	preload("res://Backgrounds/1.exr")
 	preload("res://Backgrounds/2.exr")
@@ -27,43 +28,42 @@ func _ready():
 	
 
 func parse_flags() -> Dictionary:
-	
 	var out = {"noimg": false, "nosnd": false}
 	var args = OS.get_cmdline_args()
+
 	for i in range(args.size()):
 		if args[i] == "-noimg":
 			out.noimg = true
+
 		elif args[i] == "-nosnd":
 			out.nosnd = true
+
 	return out
 
 func _process(_delta: float) -> void:
 	var names = inc.names
-	if selected != sel.get_selected_items()[0]:
-		if not selected == -1 or selected == sel.item_count:
-			selected = sel.get_selected_items()[0] 
-	if sel.is_selected(0) and current_track != "res://Music/"+ names[0] + ".ogg":
+	if (selected != sel.get_selected_items()[0]) and (not selected == -1 or selected == sel.item_count):
+			selected = sel.get_selected_items()[0]
+
+	if (sel.is_selected(0) or sel.is_selected(1)) and current_track != "res://Music/"+ names[0] + ".ogg":
 		play_sound("res://Music/"+ names[0] + ".ogg")
 		change_texture("res://Backgrounds/"+ names[0] + ".exr")
-	if sel.is_selected(1) and current_track != "res://Music/"+ names[0] + ".ogg":
-		play_sound("res://Music/"+ names[0] + ".ogg")
-		change_texture("res://Backgrounds/"+ names[0] + ".exr")
-	elif sel.is_selected(2) and current_track != "res://Music/"+ names[1] + ".ogg":
-		play_sound("res://Music/"+ names[1] + ".ogg")
-		change_texture("res://Backgrounds/"+ names[1] + ".exr")
-	elif sel.is_selected(3) and current_track != "res://Music/"+ names[1] + ".ogg":
+	elif (sel.is_selected(2) or sel.is_selected(3)) and current_track != "res://Music/"+ names[1] + ".ogg":
 		play_sound("res://Music/"+ names[1] + ".ogg")
 		change_texture("res://Backgrounds/"+ names[1] + ".exr")
 	elif sel.is_selected(4) and current_track != "res://Music/"+ names[2] + ".ogg":
 		play_sound("res://Music/"+ names[2] + ".ogg")
 		change_texture("res://Backgrounds/"+ names[2] + ".exr")
+	
 	if Input.is_action_just_pressed("Play"):
 		open_game()
+
 	if Input.is_action_just_pressed("nex"):
 		if selected == sel.item_count-1:
 			selected = 0
 		else:
 			selected += 1
+
 	if Input.is_action_just_pressed("prev"):
 		if selected == 0:
 			selected = sel.item_count-1
@@ -106,12 +106,9 @@ func Play_pressed() -> void:
 
 func open_game():
 	var gameslist = inc.gamelist
-
-	for i in range(len(gameslist)):
-		if sel.is_selected(i):
-			var link = "steam://run/" + str(gameslist[i])
-			OS.shell_open(link)
-			exit()
+	var link = "steam://run/" + str(gameslist[sel.get_selected_items()[0]])
+	OS.shell_open(link)
+	exit()
 
 func exit():
 	get_tree().quit()
